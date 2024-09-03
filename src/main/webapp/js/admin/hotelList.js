@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 function HotelListRequestFun(){
   ajaxobj={
-  url:'http://localhost:8080/HotelReservation/updateHotelRequestAdmin?type=get',
+  url:'/updateHotelRequestAdmin?type=get',
   type:"POST",
   data:{"userId":sessionStorage.getItem("userId")},
   datatype:"json"  }
@@ -65,7 +65,7 @@ function dataTableShow(tableselector,dataPacket){
 }
   function HotelListupdate(val,sta){
     ajaxobj={
-    url:'http://localhost:8080/HotelReservation/updateHotelRequestAdmin?type=update',
+    url:'/updateHotelRequestAdmin?type=update',
     type:"POST",
     data:{"id":sessionStorage.getItem("userId"),"HTId":val,"ModifiedChange":sta},
     datatype:"json" }

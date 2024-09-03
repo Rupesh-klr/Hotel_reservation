@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Jdbc.Linker;
+import Jdbc.queryConstant;
 import entites.*;
 import servlets.approval.newApprovalRequestAdmin;
 
@@ -25,29 +26,29 @@ public class hoteldao {
 		ArrayList<hotel> htList =new ArrayList();
 		switch (flage) {
 		case 0:
-			qry = "SELECT * FROM klr.Hotels   with (NOLOCK)  WHERE Htisdeleted = 0   and HTstatus=1 AND (HostelName LIKE ? OR HotelAddress LIKE ? OR HotelLocation LIKE ?) ";
+			qry = queryConstant.hotel.getquery("selecthotel"); ;
 			break;
 		case 1:
-			qry = "SELECT * FROM klr.Hotels   with (NOLOCK) WHERE Htisdeleted = 0  and HTstatus=1 ORDER by EndPr DESC";
+			qry = queryConstant.hotel.getquery("selecthotel1"); 
 			break;
 		case 2:
-			qry = "SELECT * FROM klr.Hotels  with (NOLOCK)  WHERE Htisdeleted = 0  and HTstatus=1 and EndPr <> 0  ORDER by EndPr ASC";
+			qry = queryConstant.hotel.getquery("selecthotel2");  
 			break;
 		case 3:
-			qry = "SELECT * FROM klr.Hotels  with (NOLOCK)  WHERE Htisdeleted = 0  and HTstatus=1 AND (HotelLocation LIKE ?) ";
+			qry = queryConstant.hotel.getquery("selecthotel3");  
 			break;
 		case 4:
-			qry = "SELECT * FROM klr.Hotels  with (NOLOCK)  WHERE Htisdeleted = 0  and HTstatus=1 AND (HostelName LIKE ? ";
+			qry = queryConstant.hotel.getquery("selecthotel4");  
 			break;
 		case 5:
-			qry = "SELECT * FROM klr.Hotels  with (NOLOCK)  WHERE Htisdeleted = 0  and HTstatus=1 AND (HotelAddress LIKE ? ) ";
+			qry =  queryConstant.hotel.getquery("selecthotel5"); 
 			break;
 		case 6:
-			qry = "SELECT * FROM klr.Hotels  with (NOLOCK)  WHERE Htisdeleted = 0  and HTstatus=1 AND  "+word;
+			qry =  queryConstant.hotel.getquery("selecthotel6")+word;
 			System.out.println(qry);
 			break;
 		default :
-			qry = "select top(20)* from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0   and HTstatus=1 ORDER by rating ";
+			qry =  queryConstant.hotel.getquery("selecthoteldefault"); 
 			break;
 		}
 		try {
@@ -89,17 +90,17 @@ public class hoteldao {
 		ArrayList<hotel> htList =new ArrayList();
 		String qry = null;
 		if(flag==0) {//admin to get list hotelstatus //getMyHotelList(null,0)
-		 qry = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0  and HTstatus=0 "; 
+		 qry =  queryConstant.hotel.getquery("selectMyhotel"); 
 		}else if(flag==1) {/// user to get approvaliof //getMyHotelList(null,id)
-			 qry = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus=0 and id=? "; 
+			 qry =  queryConstant.hotel.getquery("selectMyhotel1");  
 		}else if(flag==2) {/// user to get //getMyHotelList(null,id)
-			 qry = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0  and id=? "; 
+			 qry = queryConstant.hotel.getquery("selectMyhotel2");  
 		}else if(flag==3){//admin to get list hotelstatus
-			 qry = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus=1 and id=? "; 
+			 qry =  queryConstant.hotel.getquery("selectMyhotel3"); 
 		}else if(flag==4){//admin to get list hotelstatus
-			 qry = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus=1 "; 
+			 qry =  queryConstant.hotel.getquery("selectMyhotel4");  
 		}else if(flag==5) {
-			qry = "select * from klr.Hotels  with (NOLOCK)  WHERE id=?"; 			
+			qry = queryConstant.hotel.getquery("selectMyhotel5");  		
 		}
 		System.out.println(qry+"\n\n"+h);
 		try {
@@ -140,7 +141,7 @@ public class hoteldao {
  	 public hotel getHotelByHTId(hotel h) {
 		 hotel h2= new hotel();
 		 try {
-		 String qry = "select * from klr.Hotels   with (NOLOCK)  WHERE Htisdeleted=0   and HotelId =? "; 
+		 String qry =  queryConstant.hotel.getquery("selecthotelHId");  
 		 if(conn==null) {conn=Linker.getConn();}
 			psmt=Linker.getConn().prepareStatement(qry);
 			psmt.setInt(1, h.getHotelid());
@@ -173,19 +174,16 @@ public class hoteldao {
  	public Object displayHotel(int i,int id) {
 		Map<String, ArrayList<hotel> > rtdataMap=new HashMap();
 		hotel tempHtHotel=null;
-		String[] sql= {"select * from klr.Hotels   with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus=0  and id=?",
-				"select * from klr.Hotels   with (NOLOCK)  WHERE Htisdeleted=0",//for admin
-				"select * from klr.Hotels   with (NOLOCK)  WHERE  Htisdeleted=0 and id=?",//for admin to now all deleted hotels
-				"select top(3)* from klr.Hotels   with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus=1 ORDER by Rating DESC"
-				,"select top(3)* from klr.Hotels   with (NOLOCK) WHERE Htisdeleted=0   and HTstatus=1  and rating=5  ORDER by EndPr DESC ",
-				"select top(3)* from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0   and HTstatus=1  and rating=5  ORDER by StaringPr ASC ",
-				"select top(20)* from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0  and HTstatus=1"};
+		String[] sql= queryConstant.hotel.getqueryListArr();
 		String[] name= {"","","","topRated","Topclass","topDeal","topL"};
 //		System.out.println(sql[i]);
 		try {
 //			System.out.println(sql[i]);
 			for(;i<sql.length;i++) {
 				ArrayList<hotel> tempar =new ArrayList();
+				//System.out.print(sql[i]+"\t;\n");
+				Linker.statusLog.info(sql[i]);
+				Linker.debugLog.info(sql[i]);
 				psmt=conn.prepareStatement(sql[i] );
 				switch (i) {
 				case 0:
@@ -234,7 +232,7 @@ public class hoteldao {
 	public boolean isExistmemberHT(hotel h) {
 		boolean f = true;		
 		try {
-			String sql = "select * from klr.Hotels  with (NOLOCK)  WHERE Htisdeleted=0 and HTstatus in (1,0) and id=? and HostelName=? and HotelAddress =? and Htimage=? and HotelLocation =?";
+			String sql = queryConstant.hotel.getquery("selectAllisdeleted"); 
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setInt( 1, h.getId() );
 			psmt.setString( 2, h.getHostelName() );
@@ -259,7 +257,7 @@ public class hoteldao {
 		if( !isExistmemberHT(h)) {return "Existed";}
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "insert into klr.Hotels  (id,HostelName,HotelAddress,HotelNumber  ,HotelDesc,Rating,HotelLocation,Htimage  ,statusmsg) VALUES(?,?,?,?, ?,0,?,?,?)";
+			String sql = queryConstant.hotel.getquery("insertHotelquery");  
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, h.getId());            
 			psmt.setString(2, h.getHostelName());
@@ -290,7 +288,7 @@ public class hoteldao {
 		int i=0;
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "UPDATE klr.Hotels set HostelName=?,HotelAddress=?,HotelNumber=?,Rating=? ,HotelLocation=?,Htimage=?,LastmodifiedByHT=?,LastmodifiedHT=GETDATE() where Hotelid=?";
+			String sql = queryConstant.hotel.getquery("updatehotel");  
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, h.getHostelName());
 			psmt.setString(2, h.getHotelAddress());
@@ -320,12 +318,12 @@ public class hoteldao {
 		try {
 			if(psmt != null) {psmt.close();}
 			System.out.println(hTId+"\t\t"+editor);
-			String sql = "UPDATE klr.Hotels set Htisdeleted=1,HTstatus=2,LastmodifiedByHT=?,LastmodifiedHT=GETDATE() where Hotelid=?";
+			String sql = queryConstant.hotel.getquery("delHotel");  
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, "ID"+editor );  
 			psmt.setInt(2, hTId);  
 			i = psmt.executeUpdate();
-			sql = "update  klr.Roomlists set RmisDeleted=1,LastmodifiedByRM=?,LastmodifiedRM=GETDATE()  WHERE HostelId=?";
+			sql = queryConstant.hotel.getquery("delHotelID"); 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, "ID"+editor );  
 			psmt.setInt(2, hTId);  
@@ -343,7 +341,7 @@ public class hoteldao {
 		int i=0;
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "UPDATE klr.Hotels set HTstatus=?,LastmodifiedByHT=?,LastmodifiedHT=GETDATE() where Hotelid=?";
+			String sql = queryConstant.hotel.getquery("updateHotelApp"); 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, changeSt);  
 			psmt.setString(2, "ID"+adid );  

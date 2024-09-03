@@ -89,7 +89,7 @@ $(document).ready(function () {
                     "userNumber":$("#regnumber").val(),
                     "userKey":$("#regkey").val()}
             ajaxobj={
-                url:"http://localhost:8080/HotelReservation/addUser",
+                url:"/addUser",
                 type:"POST",datatype:'json',
                 data:regData}
             commonAjaxcall(ajaxobj,function responseCallback(msg,status){
@@ -142,7 +142,7 @@ $(document).ready(function() {
                         "role":$("#role").val()
                         ,"isId":"No"};      
             ajaxobj={
-                url:"http://localhost:8080/HotelReservation/loginUserCheck",
+                url:"/loginUserCheck",
                 type:"POST",datatype:'json',
                 data:logData}
                 commonAjaxcall(ajaxobj,function responseCallback(msg,status){

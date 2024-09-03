@@ -11,7 +11,7 @@ $(document).ready(function() {
             "id":sessionStorage.getItem("userId"),
           }
           ajaxobj={
-            url:"http://localhost:8080/HotelReservation/addApproval",
+            url:"/addApproval",
           type:"POST",
           data:reqFrom,
           datatype:"json"
@@ -90,7 +90,7 @@ function updateProfiledata(){
 }
 function updateRequested(userdata){
   ajaxobj={
-    url:"http://localhost:8080/HotelReservation/selectUserById",
+    url:"/selectUserById",
   type:"POST",
   data:{"operation":"requests","id":sessionStorage.getItem("userId")},
   datatype:"json"

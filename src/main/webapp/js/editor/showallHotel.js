@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	function ajaxHotellist() {
 		ajaxobj = {
-			url: "http://localhost:8080/HotelReservation/hoetelListview",
+			url: "/hoetelListview",
 			type: "POST",
 			data: {
 				userId: sessionStorage.getItem("userId"),
@@ -40,7 +40,7 @@ $(document).ready(function () {
 				ADId: sessionStorage.getItem("userId"),
 			};
 			ajaxobj = {
-				url: "http://localhost:8080/HotelReservation/editHotel",
+				url: "/editHotel",
 				type: "POST",
 				data: HotelFrom,
 				datatype: "json",
@@ -103,7 +103,7 @@ function dataTableShow(tableselector, dataPacket) {
 			) {
 				console.log("Deleting hotel");
 				ajaxobj = {
-					url: "http://localhost:8080/HotelReservation/deleteByHTId",
+					url: "/deleteByHTId",
 					type: "POST",
 					data: {
 						HTId: $(this).closest("tr").find("td:eq(1)").text(),

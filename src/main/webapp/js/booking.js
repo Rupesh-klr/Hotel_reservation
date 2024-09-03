@@ -81,7 +81,7 @@ $(document).ready(function() {
             try{
                 $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/HotelReservation/appBooking",
+                url: backendUrl+"/appBooking",
                 data: data1,
                 dataType:'json',
                 success: function (msg) {
@@ -139,7 +139,7 @@ function fun1(data1){
     sessionStorage.setItem("bookingForm",JSON.stringify( data1))
     $.ajax({
     type: "POST",
-    url: "http://localhost:8080/HotelReservation/appBooking",
+    url: backendUrl+"/appBooking",
     data: data1,
     dataType:'json',
     success: function (msg) {
@@ -180,7 +180,7 @@ function elementesZeroInDate(date){
 function ajaxcallRoomdates(){
   var datesbookedIs=[]
   obj={
-    url:"http://localhost:8080/HotelReservation/bookingBYDates",
+    url:"/bookingBYDates",
     type:"POST",
     // data:{"RoomId":11},
     data:{"RoomId":JSON.parse(sessionStorage.getItem("SelectedRoomsIs"))},
@@ -276,7 +276,7 @@ $(document).ready(function() {
 /*
 $.ajax({
     type: "POST",
-    url: "http://localhost:8080/HotelReservation/appBooking",
+    url: backendUrl+"/appBooking",
     data: data1,
     dataType:'json',
     success: function (msg) {

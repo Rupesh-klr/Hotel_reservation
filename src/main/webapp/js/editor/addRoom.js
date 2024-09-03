@@ -59,7 +59,7 @@ $(document).ready(function() {
                 "id":sessionStorage.getItem("userId")?sessionStorage.getItem("userId"):"1006"
             }
             ajaxobj={
-                url:"http://localhost:8080/HotelReservation/addRoomBYHTid",
+                url:"/addRoomBYHTid",
                 type:"POST",
                 data:RoomFrom,
                 datatype:"json"
@@ -115,7 +115,7 @@ function valideRoomFrom(){
 function selecthoteloption(){
     console.log("hotel listed");
     ajaxobj={
-        url:"http://localhost:8080/HotelReservation/selectHotelRequest",
+        url:"/selectHotelRequest",
         type:"POST",
         data:{"opration":"statustrue","id":sessionStorage.getItem("userId")?sessionStorage.getItem("userId"):"1006",},
         datatype:'json'

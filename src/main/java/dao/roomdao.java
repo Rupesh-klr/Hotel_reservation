@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Jdbc.Linker;
+import Jdbc.queryConstant;
 import entites.*;
 
 public class roomdao {
@@ -27,7 +28,7 @@ public class roomdao {
 		try {
 			System.out.println(h.getHotelid());
 			System.out.println("lnkmbkjb");
-			 String qry = "SELECT * from klr.Roomlists WITH (NOLOCK) WHERE RmisDeleted=0   and HostelId =? "; 
+			 String qry = queryConstant.room.getquery("SelectRoomlistsByHostelId");
 			if(conn==null) {conn=Linker.getConn();}
 			psmt=conn.prepareStatement(qry);
 			psmt.setInt(1, h.getHotelid());
@@ -60,7 +61,7 @@ public class roomdao {
 		int i=0;
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "insert into klr.Roomlists (HostelId, id, RoomType,      BedCount, price , CanStaycount     ,Rmcode)VALUES(?,? ,?,        ?, ?,?   ,       ?)";
+	        String sql = queryConstant.room.getquery("InsertRoomlists");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, r.getHostelId());
 			psmt.setInt(2, r.getId());
@@ -70,7 +71,7 @@ public class roomdao {
 			psmt.setInt(6, r.getCanStaycount());
 			psmt.setString(7, r.getRmcode());
 			i = psmt.executeUpdate();
-			sql="DECLARE @hotelid2 as int=?;update klr.Hotels set StaringPr=(Select MIN(price)from klr.Roomlists where HostelId=@hotelid2 ) where  Hotelid=@hotelid2;update klr.Hotels set EndPr=(Select MAx(price)from klr.Roomlists where HostelId=@hotelid2 ) where  Hotelid=@hotelid2";
+	        sql = queryConstant.room.getquery("UpdateHotelPrices");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, r.getHostelId());
 			i+=psmt.executeUpdate();
@@ -89,9 +90,9 @@ public class roomdao {
 		 String qry =null;
 		try {
 			if(flage==0) {
-				qry = "SELECT * from klr.Roomlists WITH (NOLOCK) WHERE RmisDeleted=0   and id =? ORDER BY HostelId "; 
+		        qry = queryConstant.room.getquery("SelectRoomlistsById");
 			}else {
-				qry = "SELECT * from klr.Roomlists WITH (NOLOCK) WHERE RmisDeleted=0   ORDER BY HostelId "; 
+		        qry = queryConstant.room.getquery("SelectAllRoomlists");
 			}
 			psmt=conn.prepareStatement(qry);
 			if(flage==0) {
@@ -125,8 +126,7 @@ public class roomdao {
 		int i=0;
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "update klr.Roomlists set RmisDeleted=1 ,LastmodifiedByRM=?,LastmodifiedRM=GETDATE() where Roomid=?";
-			psmt = conn.prepareStatement(sql);
+			String  sql = queryConstant.room.getquery("DeleteRoomlists");
 			psmt.setString(1, String.valueOf(usid));
 			psmt.setInt(2, rmid);		
 			i = psmt.executeUpdate();
@@ -141,7 +141,7 @@ public class roomdao {
 		int i=0;dataObject rspString=null;
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "update  klr.Roomlists set RoomType=?, BedCount=?, price=? , CanStaycount=? ,Rmcode=? where Roomid=?";
+			String 	        sql = queryConstant.hotel.getquery("UpdateRoomlists");
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, r.getRoomType());
 			psmt.setInt(2, r.getBedCount());

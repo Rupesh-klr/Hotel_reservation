@@ -31,7 +31,7 @@ function dataTableShow(tableselector,dataPacket){
         if(confirm("Do you wanted to deleat Room With id:"+($(this).closest('tr').find("td:eq(1)").text()))){
           console.log("Deleting room");
           ajaxobj={
-            url:"http://localhost:8080/HotelReservation/delectRoomByRMid",
+            url:"/delectRoomByRMid",
             type:"POST",
             data:{"RMId":($(this).closest('tr').find("td:eq(1)").text()),"id":sessionStorage.getItem("userId")},
             datatype:"json"
@@ -64,7 +64,7 @@ function dataTableShow(tableselector,dataPacket){
 
   function ajaxroomlist(){
     ajaxobj={
-    url:'http://localhost:8080/HotelReservation/selectRoomByRoomid',
+    url:'/selectRoomByRoomid',
     type:"POST",
     data:{"userId":sessionStorage.getItem("userId"),"id":sessionStorage.getItem("userId")},
     datatype:"json"  }
@@ -94,7 +94,7 @@ function roomupdate(){
             "id":sessionStorage.getItem("userId")?sessionStorage.getItem("userId"):"1006"
         }
         ajaxobj={
-            url:"http://localhost:8080/HotelReservation/editRoomByOwner",
+            url:"/editRoomByOwner",
             type:"POST",
             data:RoomFrom,
             datatype:"json"

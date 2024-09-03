@@ -79,7 +79,7 @@ $(document).ready(function() {
             }
             console.log(HotelFrom)
             ajaxobj={
-                url:"http://localhost:8080/HotelReservation/addHotel",
+                url:"/addHotel",
                 type:"POST",
                 data: HotelFrom,
                 datatype:"json"

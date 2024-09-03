@@ -28,7 +28,10 @@ public class JdbcconnectionCheck {
 			Linker.statusLog.info("FROM LIKKER 0");
 			Linker.debugLog.info("FROM LINKKER 0");
 			Linker.errorLog.error("FROM LINKKER 0");
-		}catch (Exception e) {System.out.println("Execution error occured.Terminated");Linker.errorLog.error(e.toString()+"From\n type:: \tfile::  \tmethod::");}
+		}catch (Exception e) {
+			System.out.println("Execution error occured.Terminated");
+			Linker.errorLog.error(e.toString()+"From\n type:: \tfile::  \tmethod::");
+		}
 		finally {
 			try {
 				if(rst != null) {rst.close();}

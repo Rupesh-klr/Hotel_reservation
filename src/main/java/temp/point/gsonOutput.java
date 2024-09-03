@@ -25,23 +25,23 @@ public class gsonOutput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 HttpSession session=request.getSession();
-    	 String kString=(String) session.getAttribute("userObj");
-    	 if(kString!=null) {
-    		 System.out.println( session.getAttribute("userObj"));
-    		 System.out.println(session.getAttribute("userObj").equals(request.getAttribute("userentity")));
-    	 }
-    	 kString=(String) session.getAttribute("userid");
-    	 if(kString!=null) {
-    		 System.out.println(session.getAttribute("userid").equals(request.getAttribute("userid")));
-    	 }
+//    	 String kString=(String) session.getAttribute("userObj");
+//    	 if(kString!=null) {
+//    		 System.out.println( session.getAttribute("userObj"));
+//    		 System.out.println(session.getAttribute("userObj").equals(request.getAttribute("userentity")));
+//    	 }
+//    	 kString=(String) session.getAttribute("userid");
+//    	 if(kString!=null) {
+//    		 System.out.println(session.getAttribute("userid").equals(request.getAttribute("userid")));
+//    	 }
 //    	 System.out.println(session.getAttribute("userObj").equals(request.getAttribute("userentity"))+"\n"+session.getAttribute("userid").equals(request.getAttribute("userid")));
 // 		System.out.println(session.getAttribute("userObj")+"--..--"+session.getAttribute("userid")+"--..--"+session.getAttribute("hello")+"--..--");
 // 		if(!(session.getAttribute("userObj")==null && session.getAttribute("userObj").equals(request.getParameter("userentity"))) ) {
 // 			resObj=new dataObject(-1,"not valide user");
 // 			return;
 //// 		}
-		session.setAttribute("userObj", request.getAttribute("userentity"));
-		session.setAttribute( "userid", request.getAttribute("userid"));
+//		session.setAttribute("userObj", request.getAttribute("userentity"));
+//		session.setAttribute( "userid", request.getAttribute("userid"));
     	PrintWriter out =response.getWriter(); 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		dataObject resObj =new dataObject();

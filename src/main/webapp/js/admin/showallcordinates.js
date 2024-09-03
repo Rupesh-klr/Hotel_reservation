@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 function ajaxCordinatorlist(){
     ajaxobj={
-    url:'http://localhost:8080/HotelReservation/getAllOwner',
+    url:'/getAllOwner',
     type:"POST",
     data:{"userId":sessionStorage.getItem("userId")},
     datatype:"json"  }
@@ -105,7 +105,7 @@ function editoruserFromsubmit(){
     }
     console.table("edit option",userUpdatedData);
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/deletemember',
+        url:backendUrl+'/deletemember',
         type:"POST",
         data:userUpdatedData,
         datatype:"json"}
@@ -130,7 +130,7 @@ function deleteuser(id,rem){
     }
     console.log("delete option");
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/deletemember',
+        url:backendUrl+'/deletemember',
         type:"POST",
         // data:{"AdmId":sessionStorage.getItem("userId"),"id":id,"delete":"YEs"},
         data:{"AdmId":"1003","id":id,"delete":"YEs"},
@@ -154,7 +154,7 @@ function deleteuser(id,rem){
 function viewuserHotels(id){
     console.log("view hotels option");
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/deletemember',
+        url:backendUrl+'/deletemember',
         type:"POST",
         data:{"userId":sessionStorage.getItem("userId"),"id":id,"viewHotel":"YES"},
         datatype:"json"  }
@@ -187,7 +187,7 @@ function  updateuserfun(memberType,id){
     console.log("update membership option",memberType,id);
     var adminId=sessionStorage.getItem("userId")?sessionStorage.getItem("userId"):"1001";
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/deletemember',
+        url:backendUrl+'/deletemember',
         type:"POST",
         data:{"AdmId":adminId,"id":id,"role":memberType,"update":"admin"},
         datatype:"json"  }

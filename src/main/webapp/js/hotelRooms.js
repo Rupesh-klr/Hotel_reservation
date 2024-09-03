@@ -71,7 +71,7 @@ $(document).ready(function() {
     if(Htid!=null){
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/HotelReservation/selectRoomByHotelHTid",
+            url: backendUrl+"/selectRoomByHotelHTid",
             data: {"request":"data wanted to display","HTId":Htid},
             dataType: 'json',
             success: function (msg) {

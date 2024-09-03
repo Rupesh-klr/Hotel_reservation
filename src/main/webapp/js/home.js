@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#optionsearch").show();
     $("#searchBtn").show();
 	ajaxobj = {
-		url: "http://localhost:8080/HotelReservation/selectTopHotels",
+		url: "/selectTopHotels",
 		type: "POST",
 		datatype: "json",
 		data: { request: "data wanted to display" },
@@ -177,7 +177,7 @@ $(document).ready(function () {
                 "SerachElement":qry
             }
 		}
-        //url=http://localhost:8080/HotelReservation/selectHotelSerach
+        //url= backendUrl+"/selectHotelSerach"
        Serachajaxcall(obj)
         // console.log(qry,obj);
 	});
@@ -185,7 +185,7 @@ $(document).ready(function () {
 function Serachajaxcall(obj){
     console.log(obj);
     ajaxobj={
-        url:"http://localhost:8080/HotelReservation/selectHotelSerach",
+        url:"/selectHotelSerach",
         type:"POST",
         data:obj,
         datatype:'json'

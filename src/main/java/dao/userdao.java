@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Jdbc.Linker;
+import Jdbc.queryConstant;
 import entites.*;
 
 public class userdao {
@@ -27,7 +28,7 @@ public class userdao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select id,userName,userEmail,userPhoneNo,photoRef,TypesMembership from klr.Userlist   with (NOLOCK)  WHERE isDelete=0";
+			String sql = queryConstant.user.getquery("SelectUserlistBasic");
 //			String sql = "select id,userName,userEmail,userPhoneNo,photoRef,TypesMembership from klr.Userlist WHERE isDelete=0 and TypesMembership='owner'";
 			psmt = conn.prepareStatement(sql);
 			rst=psmt.executeQuery();
@@ -56,7 +57,7 @@ public class userdao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select id,userName,userPhoneNo,userPassword,photoRef,Requested,apporvalmsg from klr.Userlist   with (NOLOCK)  where isDelete=0	and  TypesMembership=? and userEmail=?";
+			String sql =  queryConstant.user.getquery("SelectUserlistByMembershipAndEmail");
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, u.getRole());
 			psmt.setString(2, u.getUserEmail());
@@ -92,7 +93,7 @@ public class userdao {
 		if( !isExistmember(u,0)) {Linker.statusLog.info("User is already exist in our DB.Ask user for password reset are password change.");return "Existed";}
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "insert into klr.Userlist(userName,userEmail,userPhoneNo,userPassword,SecertKey,TypesMembership) values(?,?, ?,?, ?,'owner')";
+			String  sql = queryConstant.user.getquery("InsertUserlist");
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, u.getUserName());
 			psmt.setString(2, u.getUserEmail());
@@ -110,9 +111,9 @@ public class userdao {
 	public boolean isExistmember(user u,int flage) {
 		boolean f = true;	String sql = null;	
 		if(flage==1) {			
-			sql = "select * from  klr.Userlist   with (NOLOCK)  where userEmail= ? and id=?";
+			sql = queryConstant.user.getquery("SelectUserlistByEmailAndId");
 		}else {
-			sql = "select * from  klr.Userlist   with (NOLOCK)  where userEmail= ?";			
+			sql = queryConstant.user.getquery("SelectUserlistByEmail");		
 		}
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
@@ -144,7 +145,7 @@ public class userdao {
 	}
 	public dataObject deletemember(int Adid,int userid) {
 		try {
-			String sql = "update klr.Userlist  set isDelete=1,Lastmodified=GETDATE(),LastmodifiedBy=? where id=?";
+			String sql = queryConstant.user.getquery("DeleteUserlistById");
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString( 1, String.valueOf(Adid) );
 			psmt.setInt( 2, userid );
@@ -163,7 +164,7 @@ public class userdao {
 	}
 	public dataObject updatemember(int id,int Adid,String role) {
 		try {
-			String sql = "update  klr.Userlist set TypesMembership=?,LastmodifiedBy=?,Lastmodified=GETDATE()  where id=?";
+			String  sql = queryConstant.user.getquery("UpdateUserlistMembership");
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString( 1, role );
 			psmt.setInt( 2, Adid );
@@ -189,7 +190,7 @@ public class userdao {
 			}
 		}
 		try {
-			String sql = "update  klr.Userlist set userName=?,userPhoneNo=?,userEmail=?,TypesMembership=?,photoRef=?,LastmodifiedBy=?,Lastmodified=GETDATE()  where id=?";
+			String  sql = queryConstant.user.getquery("UpdateUserlistDetails");
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString( 1, user.getUserName() );
 			psmt.setString( 2, user.getUserNumber() );
@@ -215,9 +216,9 @@ public class userdao {
 		String sql=null;
 		try {
 			if(flage==0) {
-				sql = "update klr.Userlist set userPassword=? where userEmail=? and SecertKey=?";
+				sql = queryConstant.user.getquery("UpdateUserPasswordByEmailAndKey");
 			}else {
-				sql="update klr.Userlist set userPassword=? where userEmail=? and userPassword=?";
+				 sql = queryConstant.user.getquery("UpdateUserPasswordByEmailAndPassword");
 			}
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString( 1, newPass );
@@ -238,7 +239,7 @@ public class userdao {
 	}
 	public dataObject updaterequest(int id) {	
 		System.out.println(id);
-		String sql="select apporvalmsg,Requested,TypesMembership from klr.Userlist WITH (NOLOCK) where id=?";
+		String  sql = queryConstant.user.getquery("SelectApprovalMsgById");
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setInt( 1, id );

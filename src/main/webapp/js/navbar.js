@@ -1,3 +1,4 @@
+const backendUrl='http://localhost:8080/Hotel_reservation';
 const userNavbar = `
 <div class="">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark px-sm-0 px-md-5 rounded justify-content-md-between">
@@ -160,6 +161,7 @@ function commonValidingFunction() {
 		sessionStorage.getItem("logedIn") == null &&
 		sessionStorage.getItem("logedIn") !== "YES"
 	) {
+	console.log("backendUrlbackendUrl  ->"+backendUrl);
 		console.log("not loged into network");
 		isUserLogedin = "No";
     console.log("log in checking");
@@ -249,11 +251,14 @@ commonAjaxcall(ajaxobj,function responseCallback(data,status){
 });
 */
 function commonAjaxcall(obj, callback) {
-	console.log(obj);
+	console.log("-->>>"+obj);
+	console.log("backendUrlbackendUrl  ->"+backendUrl);
+	console.log("backendUrlbackendUrl  ->"+backendUrl+obj.url);
+ 
 	try {
 		$.ajax({
 			type: obj.type,
-			url: obj.url,
+			url: backendUrl+obj.url,
 			data: obj.data,
 			dataType: obj.datatpe,
 			success: function (msg) {

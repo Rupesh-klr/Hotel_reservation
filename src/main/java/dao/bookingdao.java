@@ -12,6 +12,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 import Jdbc.Linker;
+import Jdbc.queryConstant;
 import entites.*;
 public class bookingdao {
 	private Connection conn;
@@ -31,7 +32,7 @@ public class bookingdao {
 		System.out.println(b);
 		try {
 			if(psmt != null) {psmt.close();}
-			String sql = "insert into klr.BookingLists (id,Hostelid,Roomid,NoOfGuests,BookedDate,BookingFrom,BookingTo,TotalStay) VALUES(?,?,  ?, ? ,getdate(),DATEADD(day,?,?), DATEADD(day,?,?),1)";
+			String sql = queryConstant.booking.getquery("InsertBookingList");
 //			System.out.println(b.getDays());
 			if(b.getDays()>=i ) {
 				while(i<b.getDays()) {
@@ -62,9 +63,9 @@ public class bookingdao {
 		ArrayList<String> get=new ArrayList();
 		String sql="";
 		if(flag==0) {
-			sql = "select BookingFrom from  [klr].[BookingLists]  with (NOLOCK)  where  BookingisClosed=0 and BookingFrom >GETDATE() and Roomid=?";
+			sql =  queryConstant.booking.getquery("selectroomid");
 		}else{
-			sql = "select BookingFrom from  [klr].[BookingLists]  with (NOLOCK)  where  BookingisClosed=0 and BookingFrom >GETDATE() and Roomid=? and id="+flag;
+			sql = queryConstant.booking.getquery("selectroomidId")+flag;
 		}
 		try {
 			if(rst != null) {rst.close();}
@@ -91,7 +92,7 @@ public class bookingdao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select * from klr.BookingLists  with (NOLOCK)  where BookingisClosed=0 and Hostelid=?";
+			String sql = queryConstant.booking.getquery("selectHotelId"); 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, HTId);
 			rst=psmt.executeQuery();
@@ -128,7 +129,7 @@ public class bookingdao {
 			try {
 				if(rst != null) {rst.close();}
 				if(psmt != null) {psmt.close();}
-				String sql = "select * from klr.BookingLists  with (NOLOCK)  where BookingisClosed=0 and Roomid=?";
+				String sql = queryConstant.booking.getquery("selectroomIdonly"); 
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, RMId);
 				rst=psmt.executeQuery();
@@ -163,7 +164,7 @@ public class bookingdao {
 			try {
 				if(rst != null) {rst.close();}
 				if(psmt != null) {psmt.close();}
-				String sql = "select BookingId,id,Hostelid,Roomid,NoOfGuests,CONVERT(varchar(100),BookedDate,105)as bookedon,CONVERT(varchar(100),BookingFrom,105) as BookingFrom,CONVERT(varchar(100),BookingTo,105) as BookingTo,TotalStay,Totalprice from klr.BookingLists  with (NOLOCK)  where BookingisClosed=0 and id=?";
+				String sql = queryConstant.booking.getquery("selectbookingByDate");  
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, id);
 				rst=psmt.executeQuery();
@@ -199,7 +200,7 @@ public class bookingdao {
 			try {
 				if(rst != null) {rst.close();}
 				if(psmt != null) {psmt.close();}
-				String sql = "select * from klr.BookingLists  with (NOLOCK)  where BookingID=?";
+				String sql =  queryConstant.booking.getquery("selectBookingId"); ;
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, bookingId);
 				rst=psmt.executeQuery();
@@ -237,9 +238,10 @@ public class bookingdao {
 				if(rst != null) {rst.close();}
 				if(psmt != null) {psmt.close();}
 				
-				String sqlLaString="",sql1 = "select bl.BookingID,bl.NoOfGuests,CONVERT(varchar(100),bl.BookedDate,105)as bookedon,CONVERT(varchar(100),bl.BookingFrom,105) as BookingFrom, ",
-				sql2 =" CONVERT(varchar(100),bl.BookingTo,105) as BookingTo,bl.TotalStay,bl.Totalprice,bl.Roomid,rl.RoomType,rl.price,bl.Hostelid,hl.HostelName,hl.HotelLocation,hl.HotelAddress,hl.HotelNumber,bl.id,ul.userEmail,ul.userName,ul.userPhoneNo ",
-				sql3=" from klr.BookingLists as bl inner JOIN  klr.Roomlists as rl on bl.Roomid=rl.Roomid inner JOIN  klr.Hotels as hl on hl.Hotelid=rl.HostelId inner JOIN  klr.Userlist as ul on ul.id=bl.id where ";
+				String sqlLaString="",
+						sql1 =  queryConstant.booking.getquery("selectgetdetaildBooking1"),
+				sql2 =  queryConstant.booking.getquery("selectgetdetaildBooking2"),
+				sql3=  queryConstant.booking.getquery("selectgetdetaildBooking3");
 				if(flage==0) {
 					sqlLaString=" bl.id=? ";
 				}else {
@@ -284,7 +286,7 @@ public class bookingdao {
 		public dataObject updateBooking(int bookingId, int flage) {
 			String sqlString="";
 			if(flage==0) {
-				sqlString="update klr.BookingLists set BookingisClosed=1 , LastmodifiedBy='user' , Lastmodified=getdate() where BookingId=?";
+				sqlString=  queryConstant.booking.getquery("updatebookingById"); 
 			}
 			try {
 				psmt=conn.prepareStatement(sqlString);

@@ -3,7 +3,7 @@ $(document).ready(function() {
     function ajaxCordinatorlist(){
         console.log("point1");
             ajaxobj={
-            url:'http://localhost:8080/HotelReservation/newApprovalRequestAdmin',
+            url:'/newApprovalRequestAdmin',
             type:"POST",
             data:{"userId":sessionStorage.getItem("userId")},
             datatype:"json"  }
@@ -16,7 +16,7 @@ $(document).ready(function() {
             console.log(data);
             if(data.status===1 || data.status===0){
                 $('#approvalRequest').DataTable({
-                     ajax: 'http://localhost:8080/HotelReservation/newApprovalRequestAdmin',
+                     ajax: backendUrl+'/newApprovalRequestAdmin',
                     // buttons: [
                     //     {
                     //         text: 'Create new record',
@@ -86,7 +86,7 @@ $(document).ready(function() {
             return;
         }
         ajaxobj={
-            url:'http://localhost:8080/HotelReservation/changeRequestedApproval',
+            url:'/changeRequestedApproval',
             type:"POST",
             data:{"id":sessionStorage.getItem("userId"),
                 "userId":sessionStorage.getItem("Member"),

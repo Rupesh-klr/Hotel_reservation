@@ -133,7 +133,7 @@ function requestresestpassword(){
         "value1":temp
     }
     ajaxobj={
-        url:"http://localhost:8080/HotelReservation/updateUserRequest",
+        url:"/updateUserRequest",
         type:"POST",
         data:obj,
         datatype:'json'

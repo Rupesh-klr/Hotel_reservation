@@ -24,22 +24,26 @@ import entites.hotel;
 @WebServlet("/selectTopHotels")
 public class selectTopHotels extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		doPost(request,response);
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out =response.getWriter(); 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        dataObject resObj =new dataObject(1,"successfully task completed.","nothing","data retrived to display for user");
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		dataObject resObj = new dataObject(1, "successfully task completed.", "nothing",
+				"data retrived to display for user");
 		hoteldao objHoteldao = new hoteldao(Linker.getConn());
-		resObj.setDatapack( objHoteldao.displayHotel(3 ,9999) );
+		resObj.setDatapack(objHoteldao.displayHotel(3, 9999));
 		Linker.colseConn();
-        response.setContentType("application/json");
-        out.append(		gson.toJson(resObj)	   );
-        out.flush();
-        out.close();
+		response.setContentType("application/json");
+		out.append(gson.toJson(resObj));
+		out.flush();
+		out.close();
 	}
 
 }

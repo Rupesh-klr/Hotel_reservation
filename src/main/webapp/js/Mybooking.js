@@ -5,7 +5,7 @@ $(document).ready(function() {
 function ajaxMyBookingList(){
     console.log("point1");
         ajaxobj={
-        url:'http://localhost:8080/HotelReservation/bookingByuser',
+        url:'/bookingByuser',
         type:"POST",
         data:{"id":sessionStorage.getItem("userId")},
         datatype:"json"  }
@@ -50,7 +50,7 @@ function ajaxMyBookingList(){
 function viewDetailBTn(BookingID){
     console.log("view detail of booking.",BookingID);
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/statusBooking',
+        url:'/statusBooking',
         type:"POST",
         data:{"id":sessionStorage.getItem("userId"),"Bookingid":BookingID,"ALL":"NO"},
         datatype:"json"  }
@@ -103,7 +103,7 @@ function viewDetailBTn(BookingID){
 function clanceBooking(BookingId,rem){
     console.log("clanceing",BookingId);
     ajaxobj={
-        url:'http://localhost:8080/HotelReservation/closeingBooking',
+        url:'/closeingBooking',
         type:"POST",
         data:{"id":sessionStorage.getItem("userId"),"BookingId":BookingId},
         datatype:"json"  }

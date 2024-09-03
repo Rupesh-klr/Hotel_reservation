@@ -4,7 +4,7 @@ $(document).ready(function() {
 function HotelListRequestFun(){
     var temp=1006;
     ajaxobj={
-    url:'http://localhost:8080/HotelReservation/hoetelListview',
+    url:'/hoetelListview',
     type:"POST",
     data:{"userId":sessionStorage.getItem("userId"),"id":sessionStorage.getItem("userId"),"opertion":"allmyhotellist"},
     datatype:"json"  }

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Jdbc.Linker;
+import Jdbc.queryConstant;
 import entites.*;
 
 public class approvaldao {
@@ -23,14 +24,14 @@ public class approvaldao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "insert into klr.ApprovalRequests (ProofType,Proof,AttachmentMessage,id) values (?,?,?,?)";
+			String sql = queryConstant.approval.getquery("Insertrequest");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, a.getProofType());
 			psmt.setString(2, a.getProof());
 			psmt.setString(3, a.getAttachmentMessage());
 			psmt.setInt(4, a.getId());
 			sta=psmt.executeUpdate();
-			sql="update klr.Userlist set Requested=2 ,apporvalmsg=? where id=?";
+			sql= queryConstant.approval.getquery("updatelist");
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, a.getAttachmentMessage());
 			psmt.setInt(2, a.getId());
@@ -54,7 +55,7 @@ public class approvaldao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select * from klr.ApprovalRequests   with (NOLOCK) where isClosed=0 and ApprovalId=?";
+			String sql = queryConstant.approval.getquery("selectApprovelRequest");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, approvalId);
 			rst=psmt.executeQuery();
@@ -87,7 +88,7 @@ public class approvaldao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select * from klr.ApprovalRequests  with (NOLOCK)  where id=?";
+			String sql =  queryConstant.approval.getquery("selectApprovelRequestId");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, id);
 			rst=psmt.executeQuery();
@@ -114,7 +115,7 @@ public class approvaldao {
 		return aList;
 	}
 	public String updateApprovalByAdmin(int updateApId, int adid, String closeRepaly,int requestChageg,int userId) {
-		String sql="update klr.ApprovalRequests set closebyId=? , isClosed=1 , closedReplay=? ,closedOn=GETDATE() where ApprovalId=?";		
+		String sql= queryConstant.approval.getquery("updateApId");		
 		int sta=0;
 		try {
 			if(rst != null) {rst.close();}
@@ -125,7 +126,7 @@ public class approvaldao {
 			psmt.setInt(3, updateApId);
 			sta = psmt.executeUpdate();
 			psmt.close();
-			sql= "update klr.Userlist set Requested=? , apporvalmsg=? , TypesMembership=? , Lastmodified=GETDATE() , LastmodifiedBy='admin' where id=?";
+			sql= queryConstant.approval.getquery("updatebyId");
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1,requestChageg );
 			psmt.setString(2, "\nRepaly :\n"+closeRepaly);
@@ -165,7 +166,7 @@ public class approvaldao {
 		try {
 			if(rst != null) {rst.close();}
 			if(psmt != null) {psmt.close();}
-			String sql = "select * from klr.ApprovalRequests  with (NOLOCK)  where isClosed=0";
+			String sql = queryConstant.approval.getquery("selectisClosed0");
 			psmt = conn.prepareStatement(sql);
 			rst=psmt.executeQuery();
 			while (rst.next()) {
