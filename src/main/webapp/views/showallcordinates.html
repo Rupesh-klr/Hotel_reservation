@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-ordinates modification </title>
+    <script src="../common/jquery.js"></script>
+    <link href="../common/bootstrap_4.0.0_css_bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_3.4.1_js_bootstrap.min.js"></script>
+
+
+    
+    <link rel="stylesheet" href="../common/dataTable/css/bootstrap@5.2.3.min.css">
+    <link rel="stylesheet" type="text/css" href="../common/dataTable/css/jquery.dataTables.min.css">
+</head>
+<style>.warn {
+  color: #f00;
+}
+
+.warn b {
+  font-size: larger;
+  font-weight: 900;
+}
+.dt-center.editor-roles-selection,.dt-center.editor-view-hotel{ vertical-align: middle;}.dt-center.editor-view-hotel button{ color: black;    background-color: yellow;}
+  </style>
+<body >
+    <div id="navTab"></div>    
+    <div class="container">
+
+      <table id="coOrdinators" class="table table-striped table-bordered table-hover"  cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Profile image</th>
+              <th>Role</th>
+              <th>Role change action</th>
+              <th>delete action</th>
+              <th>view hotel</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+    </div>
+
+      <div class="modal" id="memberhotels">
+        <div class="modal-content">
+          <span onclick='$("#memberhotels").hide()'>&times;</span>
+          <div id="hotelsData" class="text-center"></div>
+        </div>
+      </div>
+     <div class=" container modal border-5" id="UserUpdateForm">
+        <form class="form-control  modal-content p-5 mx-auto" >
+          <span id="closeFrom" onclick='$("#UserUpdateForm").hide()'>&times;</span>
+          <h1 class="text-center text-info ">Sign up From</h1>
+          <p>
+            <span class="warn"><b>&nbsp;*</b> </span>This field are Required
+          </p>
+          <div class="form-group">
+            <label for="name">User Name <span class="warn error" id="err_updusername"><b>&nbsp;*</b>&nbsp; </span></label>
+            <input type="text" placeholder="name" id="updusername" />
+          </div>
+          <label for="name">User Email <span class="warn error" id="err_upduseremail"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="email" placeholder="email address" id="upduseremail" />
+      
+          <label for="name">User Phone  <span class="warn error" id="err_updusernumber"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="number" placeholder="Phone number" id="updusernumber" />
+          <label for="role">Role <span class="warn" ><b>&nbsp;*</b> </span></label>
+          <select class="form-select text-center" 
+          aria-label="Default select example" id="role" name="role"  required>
+            <option value="" disabled>Select role</option>
+            <option value="customer" >Custmoer</option>
+            <option value="owner">Co-ordinator</option>
+            <option value="admin" selected>Admin</option>
+          </select><br>
+          <div class="row form-control-sm">
+            <label for="Imageref"  class="col-2 pe-1">Image </label>
+            <input type="text" class="col-8" placeholder="Photo url" name="Imageref" id="Imageref" value="NTH"/>
+          </div>
+          <div class="row justify-content-between mt-2 mx-5">
+            <button type="button" class="btn btn-success col-4 " id="updateUserAdminBtn">Update</button>
+            <button type="button" class="btn btn-primary  col-4" id="clanceChange" onclick='$("#UserUpdateForm").hide()'>cancle</button>
+          </div>
+          </form>
+      </div>
+      
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+    
+    
+    <script src="../common/dataTable/js/jquery@3.6.1.min.js"></script>
+    <script src="../common/dataTable/js/bootstrap@5.2.3.min.js"></script>   
+    <script src="../common/dataTable/js/jquery.dataTables.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/admin/showallcordinates.js"></script>
+</body>
+</html>

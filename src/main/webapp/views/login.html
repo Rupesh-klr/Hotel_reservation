@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" type="image/gif" href="../assets/img/favicon.gif"> -->
+    <title>Log in page For hotel reservation</title>
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- <link rel="stylesheet" href="../common/css_bootstrap.min.css.css"> -->
+    <link rel="stylesheet" href="../assets/img/rooms/room1whiteice.webp">
+    <script src="../common/jquery.js"></script>
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_3.4.1_js_bootstrap.min.js"></script>
+    <script></script>
+</head>
+<body>
+  <!-- <div id="navTab"></div> -->
+    
+    <!-- <h1>page 1</h1> -->
+    <div class="login-page">
+      <div class="form" >
+        <span  id="homeredirector" style="color: red; font-size: -webkit-xxx-large;float: right;    ">&times;</span>
+        <form class="register-form" id="sinupForm">
+          <h1 class="text-center text-info ">Sign up From</h1>
+          <p>
+            <span class="warn"><b>&nbsp;*</b> </span>This field are Required
+          </p>
+          <label for="name">User Name <span class="warn error" id="err_regname"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="text" placeholder="name" id="regname" />
+          
+          <label for="name">User Email <span class="warn error" id="err_regemail"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="email" placeholder="email address" id="regemail" />
+
+          <label for="name">Password : <span class="warn error" id="err_regpass"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="password" placeholder="password" id="regpass" />
+
+          <label for="name">Conform Password : <span class="warn error" id="err_regcp"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="Password" placeholder="Conform password" id="regcp" />
+
+          <label for="name">User Phone  <span class="warn error" id="err_regnumber"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="number" placeholder="Phone number" id="regnumber" />
+          <!-- <input type="text" maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" placeholder="Phone number"/> -->
+          
+          <select class="form-select-lg " onfocus='this.size=4;' onblur='this.size=1;' 
+            onchange='this.size=1; this.blur();'
+            aria-label="Default select example" id="roleStore" name="role"  placeholder="" required>
+              <option value="" disabled>Choose any one question?</option>
+              <option value="1" >What is your pet name?</option>
+              <option value="2" selected>What is your nice name?</option>
+              <option value="3">what is favourite food item?</option>
+              <option value="4">which place your like more?</option>
+              <option value="5">other ..(SecertKey) no need Hints for </option>
+          </select>
+          <label for="name">SecertKey <span class="warn error" id="err_regkey"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="text" placeholder="SecertKey" id="regkey" />
+          <label for="agreed">
+            <input type="checkbox" name="agreed" id="agreed" checked>
+            <span class="warn error" id="erragreed">*</span>
+            I agree for term & conditions.
+          </label><br>
+          <button type="button" id="submitBtnSingup">Register</button>
+          <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <!-- login form starting here -->        
+        <form class="login-form" id="logForm" >
+          <h1 class="text-center text-info ">Login From</h1>
+          <p>
+            <span class="warn"><b>&nbsp;*</b> </span>This field are Required
+          </p>
+          <label for="name">User Email <span class="warn" id="errloginname"><b>&nbsp;*</b> </span></label>
+          
+          <input type="text" placeholder="username" id="LoginUserName" />
+          <label for="name">Password  <span class="warn" id="errloginpass"><b>&nbsp;*</b> </span></label>
+          
+          <input type="password" placeholder="password" id="LoginPass" />
+          <label for="role">Role <span class="warn" id="errloginrole"><b>&nbsp;*</b> </span></label>
+                  <select class="form-select-lg " onfocus='this.size=4;' onblur='this.size=1;' 
+                    onchange='this.size=1; this.blur();'
+                  aria-label="Default select example" id="role" name="role"  placeholder="" required>
+                      <option value="" disabled>Select role</option>
+                      <option value="customer" >Custmoer</option>
+                      <option value="owner">Co-ordinator</option>
+                      <option value="admin" selected>Admin</option>
+                  </select>
+          <button type="button" id="submitBtnLogin">login</button>
+          <p class="message ">Not registered? <a href="#">Create an account</a></p>
+          <p class="forgot m-3 p-3"><a  href="forgotpassword.html" id="forgotbtn">Forgot password ?</a></p>
+        </form>
+      </div>
+    </div>
+<script src="../js/navbar.js"></script>
+<script src="../js/login.js"></script>
+</body>
+</html>

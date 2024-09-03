@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Booking room page</title>
+    <script src="../common/jquery.js"></script>
+    <link href="../common/bootstrap_4.0.0_css_bootstrap.css" rel="stylesheet" id="bootstrap-css">
+ 
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_3.4.1_js_bootstrap.min.js"></script>
+    <link href="../assets/css/booking.css" rel="stylesheet">
+  <link href="../common/calander/jquery-ui.css" rel="stylesheet"> 
+  
+</head>
+<body>
+    <div id="navTab"></div>
+    <!-- <h1>Hello Final Booking room page</h1>
+    <input type="text" id="datePickM" /> -->
+    <div id="hotelDetails" class="container m-2 p-3"></div>
+    <div class="roomDetails" class="container m-2 p-3"></div>
+    <div class="bookinform">
+        <form action="#" class="bookingFrom" id="bookingFrom">
+            <div class="form-floating">
+                <label for="NoOfGuests">No of persons </label> <span id="errGuests" class="warn"><b>*</b></span>
+                <input type="number" class="form-control" id="NoOfGuests" placeholder="No of guests "  >
+            </div>
+            <div class="form-group">
+                <label for="bookFromdate">Select from today only</label> <span id="errdatefrom" class="warn"><b>*</b></span>
+                <input type="" class="form-control " id="bookFromdate" name="bookFromdate" readonly>
+            </div>
+            <div class="form-group">
+                <label for="bookTodate">Select atleast same are more than 1 day</label> <span id="errdateto" class="warn"><b>*</b></span>
+                <input type="" class="form-control" id="bookTodate" name="bookTodate" readonly>
+            </div>
+            
+            <div class="form-floating form-group row">
+                <label for="AdvancesPaid" class="col-7">Advances to Pay on check - in</label>
+                <select class="form-control mb-3  col-3 ms-2" id="AdvancesPaid" aria-label="Floating label select example">
+                    <option disabled>Pick deposited money</option>
+                    <option value="1">500</option>
+                    <option value="2">1000</option>
+                    <option value="3">2000</option>                    
+                </select> <span id="erradvances" class="warn"><b>*</b></span>
+            </div>
+            <div class="text-center ">
+
+                <button type="button" class="btn btn-success border-0 mx-4" id="bookNow">BooK Now</button>
+                <button type="button" id="discardBtn" class="btn btn-danger border-0 mx-4">Discard</button>
+            </div>
+        </form>
+    </div>
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/booking.js"></script>
+	<script src="../common/jquery.js"></script>
+    
+	<!-- <script src="../common/calander/jquery-ui.js"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/dubrox/Multiple-Dates-Picker-for-jQuery-UI@master/jquery-ui.multidatespicker.js"></script>
+</body>
+</html>

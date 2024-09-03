@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval requsted by admin</title>
+    
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+     <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+     <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="../common/dataTable/css/bootstrap@5.2.3.min.css">
+    <link rel="stylesheet" type="text/css" href="../common/dataTable/css/jquery.dataTables.min.css">
+
+</head>
+<body>
+    <div id="navTab"></div>
+    <div class="container">
+    <table id="approvalRequest" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>User Id</th>
+            <th>Approval Id</th>
+            <th>Proof Types</th>
+            <th>Proof number</th>
+            <th>Attachment msg</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        
+      </table>
+    </div>
+      <div id="approvalupdate" class="container modal" style="display: none;">
+        
+        <div class="modal-content"> 
+        <form id="approval">
+          <span class="close" id="closeBtnHF">&times;</span>
+            <h3 class="text-info text-center mb-4">Update Form</h3>
+            <div class="form-group text-center">
+              <select class="form-select-lg " id="selectapprovalMenu"  required>
+                      <option value="-1" >rejected</option>
+                      <option value="0" selected>Insuffient data!</option>
+                      <option value="2">Co-ordinator</option>
+                      <option value="3">admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="repMsg">close replay Message</label> <span class="text-danger fw-bolder " id="approvalreplay"><b>*</b></span>
+              <textarea class="form-control" id="repMsg" rows="2" placeholder="approval response can be added." >Congulation from now on word your a member!.</textarea>
+            </div>
+            <div class="d-block text-center ">
+                <button type="button" id="responseBtn" class="btn btn-outline-success border-0   " >Register</button>
+                <button type="button" id="responseDiscard" class="btn btn-outline-danger border-0 " >Discard</button>
+            </div>
+        </form>
+        </div>
+        </div>
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+    <script src="../common/jquery.js"></script>
+    <script src="../common/dataTable/js/jquery@3.6.1.min.js"></script>
+    <script src="../common/dataTable/js/bootstrap@5.2.3.min.js"></script>   
+    <script src="../common/dataTable/js/jquery.dataTables.min.js"></script>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/admin/approvalrequest.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hotel By owners</title>
+    <script src="../common/jquery.js"></script>
+    <link href="../common/bootstrap_4.0.0_css_bootstrap.css" rel="stylesheet" id="bootstrap-css">
+	  <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_4.0.0_js_bootstrap.js"></script>
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_3.4.1_js_bootstrap.min.js"></script>
+    <link href="../assets/css/editor/addhotel.css" rel="stylesheet">
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_4.0.0_js_bootstrap.js"></script>
+</head>
+<body>
+    <div id="navTab"></div>
+    <div class="container ">
+        <form id="HoteFrom">
+            <h3 class="text-info text-center mb-4">Hotel Form</h3>
+            <div class="form-group">
+              <label for="HotelName" >Hotel Name</label> <span class="text-danger fw-bolder " id="errHtName"><b>*</b></span>
+              <input type="text" class="form-control" id="HotelName" placeholder="Hotel Name" >
+            </div>
+            <div class="form-group">
+              <label for="HotelName">Hotel Location</label> <span class="text-danger fw-bolder " id="errHtLocation"><b>*</b></span>
+              <input type="text" class="form-control" id="HotelLocation" placeholder="Hotel Location" >
+            </div>
+            <div class="form-group">
+              <label for="HotelNumber">Hotel countact Number</label> <span class="text-danger fw-bolder " id="errHtNumber"><b>*</b></span>
+              <input type="number" class="form-control" id="HotelNum" placeholder="Hotel countact Number" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Image path(url)</label> <span class="text-danger fw-bolder " ><b>*</b>Default image is provided</span>
+              <input type="text" class="form-control" id="HTImage" placeholder="Hotel Image path(url)" value="NTH">
+            </div>
+            <div class="form-group"> 
+              <label for="HotelAddress">Hotel Description</label><span class="text-danger fw-bolder " id="errHtdes"><b>*</b></span>
+              <textarea class="form-control" id="HotelDesc" rows="2" placeholder="Hotel Description you want for promation."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="HotelAddress">Hotel Address</label> <span class="text-danger fw-bolder " id="errHtAdd"><b>*</b></span>
+              <textarea class="form-control" id="HotelAddress" rows="2" placeholder="Hotel Address"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="stsMsg">Admin request Message</label> <span class="text-danger fw-bolder " id="errHtstsMsg"><b>*</b></span>
+              <textarea class="form-control" id="stsMsg" rows="2" placeholder="Admin request Message with can be added."></textarea>
+            </div>
+            <div class="d-block text-center ">
+                <button id="HotelBtn" type="button" class="btn btn-outline-success border-0   " >Register</button>
+               <button type="button" id="HotelDiscard" class="btn btn-outline-danger border-0 " >Discard</button>
+            </div>
+          </form>
+        </div>
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../common/jquery.js"></script>
+
+    <script src="../js/editor/addhotel.js"></script>
+</body>
+</html>
+
+

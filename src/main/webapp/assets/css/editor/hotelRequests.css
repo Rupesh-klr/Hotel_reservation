@@ -1,0 +1,28 @@
+
+#searchtext,#valueFiled{
+    width: 200px;
+    max-width:  200px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+ #valueFiled > div:nth-child(1) > input,
+#valueFiled > div.form-group.text-right.col-md-6.m-0 > input,
+    #valueFiled > div.form-group.text-right.col-md-6.m-0 > input,#valueFiled > div:nth-child(1) > input{
+        height: 100%;
+        width: 100px;
+        padding-left: 20px;
+    }
+    #valueFiled > div:nth-child(1) > #min,#valueFiled > div.form-group.text-right.col-md-6.m-0 > #max{
+        position: absolute;
+        color: hsl(203, 89%, 52%);
+        left: 20px;
+        font-weight: 700;
+    }
+    #optionsearch{
+        width: 100px;
+        font-size: 1rem;
+        height: 40px;
+        padding: 0px;
+        max-width: 100px;
+    }

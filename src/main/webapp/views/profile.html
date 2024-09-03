@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile page </title>
+    <script src="../common/jquery.js"></script>
+    <link href="../common/bootstrap_4.0.0_css_bootstrap.css" rel="stylesheet" id="bootstrap-css">
+ 
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+    <style>
+        body {
+            position: relative;
+        }
+
+        /* #fromBlock {
+    background: red;
+    position: absolute;
+    top: 510px;
+    left: 250px;
+     z-index: -2; 
+    padding: 30px;
+} */
+    form{
+        padding: 30px;
+    }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+
+            background-color: #fff;
+
+            padding: 20px;
+
+            max-width: 400px;
+
+            margin: 100px auto;
+
+            border-radius: 5px;
+
+        }
+        .close {
+
+            float: right;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+        input,
+        button {
+
+            display: block;
+
+            width: 100%;
+
+            margin-bottom: 10px;
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navTab"></div>
+    <div class="container">
+
+        <h1 class="text-start text-uppercase text-info d-inline-block mx-3">Profile page</h1>
+        <div class="card m-auto" id="profileBody">
+
+        </div>
+    </div>
+    </div>
+    <div id="fromBlock" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <form action="#">
+                <h1 class="text-center">Approval request</h1>
+                <label for="proofType">Select Which you have to apply </label>
+                <select class="form-select" required name="proofType" id="proofType" style="width: 100%;height: 40px;">
+                    <option value="0" disabled>select any once option provide that</option>
+                    <option value="1">Adhard card</option>
+                    <option value="2">Pan card</option>
+                    <option value="3">votrer id</option>
+                    <option value="4">driving licese</option>
+                    <option value="5">Driving Lices</option>
+                </select>
+                <div class="form-floating mt-3">
+                    <label for="floatingInputValue">YOU proof document Number </label>
+                    <input type="text" class="form-control" id="floatingInputValue"
+                        placeholder="Given verification proof number">
+                </div>
+                <div class="form-group">
+                    <label for="Attachment">Attacment message (With any refernces can be attached here)</label>
+                    <textarea class="form-control" name="Attachment" id="AttachmentTA" rows="3" required></textarea>
+                </div>
+                <button type="button" class="btn btn-success border-0" id="requestBtn">Request</button>
+                <button type="button" class="btn btn-danger border-0" id="dicardBtn">Dicard</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <div class=" container modal border-5" id="UserUpdateForm">
+        <form class="form-control  modal-content p-5 mx-auto" >
+          <span id="closeFrom" onclick='$("#UserUpdateForm").hide()'>&times;</span>
+          <h1 class="text-center text-info ">Sign up From</h1>
+          <p>
+            <span class="warn"><b>&nbsp;*</b> </span>This field are Required
+          </p>
+          <div class="form-group">
+            <label for="name">User Name <span class="warn error" id="err_updusername"><b>&nbsp;*</b>&nbsp; </span></label>
+            <input type="text" placeholder="name" id="updusername" />
+          </div>
+          <label for="name">User Email <span class="warn error" id="err_upduseremail"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="email" placeholder="email address" id="upduseremail" />
+      
+          <label for="name">User Phone  <span class="warn error" id="err_updusernumber"><b>&nbsp;*</b>&nbsp; </span></label>
+          <input type="number" placeholder="Phone number" id="updusernumber" />
+          <label for="role">Role <span class="warn" ><b>&nbsp;*</b> </span></label>
+          <select class="form-select text-center" 
+          aria-label="Default select example" id="role" name="role"  required>
+            <option value="" disabled>Select role</option>
+            <option value="customer" >Custmoer</option>
+            <option value="owner">Co-ordinator</option>
+            <option value="admin" selected>Admin</option>
+          </select><br>
+          <div class="row form-control-sm">
+            <label for="Imageref"  class="col-2 pe-1">Image </label>
+            <input type="text" class="col-8" placeholder="Photo url" name="Imageref" id="Imageref" value="NTH"/>
+          </div>
+          <div class="row justify-content-between mt-2 mx-5">
+            <button type="button" class="btn btn-success col-4 " id="updateUserAdminBtn">Update</button>
+            <button type="button" class="btn btn-primary  col-4" id="clanceChange" onclick='$("#UserUpdateForm").hide()'>cancle</button>
+          </div>
+          </form>
+      </div>
+
+    <script src="../common/jquery.js"></script>
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../common/jquery.js"></script>
+</body>
+
+</html>

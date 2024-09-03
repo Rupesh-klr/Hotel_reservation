@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddRoom page By owners</title>
+    <script src="../common/jquery.js"></script>
+    <link href="../common/bootstrap_4.0.0_css_bootstrap.css" rel="stylesheet" id="bootstrap-css">
+ 
+    <link href="./Navbar T_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Navbar T_files/fonts.google400,100,300,700.css" rel="stylesheet">
+    <link href="./Navbar T_files/navbar.css" rel="stylesheet">
+    <script src="../common/maxcdn.bootstrapcdn.com_bootstrap_3.4.1_js_bootstrap.min.js"></script>
+    <link href="../assets/css/editor/addRoom.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navTab"></div>
+    <div class="container">
+        <form id="RoomFrom">
+            <h3 class="text-info text-center mb-4">Room Form</h3>
+            <h4 class="text-center text-bg-info">Hotel name</h4>
+            <div id="yourhotelselectlist"><select class="form-select"  aria-label="Default select example" id="hotellsit"></select></div>
+            <div class="form-group">
+              <label for="RoomType" >Room Type</label> <span class="text-danger fw-bolder " id="errRMtype"><b>*</b></span>
+              <input type="text" class="form-control" id="RoomType" placeholder="Room Type" >
+            </div>
+            <div class="row justify-content-between text-left">
+                <div class="form-group col-6">
+                    <label for="rmCode">Room Number </label> <span class="text-danger fw-bolder " id="errRmC"><b>*</b></span>
+                    <input type="text" class="form-control" id="rmCode" placeholder="Room Number ">
+                </div>
+                <div class="form-group col-6"> 
+                  <label for="CanStay">Canstay members</label><span class="text-danger fw-bolder " id="errCanStay"><b>*</b></span>
+                  <input type="text" class="form-control" id="CanStay" placeholder="can stay" >
+              </div>
+                <div class="form-group col-6">
+                    <label for="Price">Price</label> <span class="text-danger fw-bolder " id="errPrice"><b>*</b></span>
+                    <input type="price" class="form-control" id="price" placeholder="price" >
+                </div>
+                <div class="form-group col-6">
+                  <label for="rmBed">Bedcount </label> <span class="text-danger fw-bolder " id="errRmBed"><b>*</b></span>
+                  <input type="text" class="form-control" id="rmBed" placeholder="Bedcount" >
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="RMImage">Image path(url)</label> <span class="text-danger fw-bolder " ><b>*</b></span>
+              <input type="text" class="form-control" id="RMImage" placeholder="Room Image path(url)" value="../assets/img/rooms/room1whiteice.webp">
+            </div>
+          <div class="d-block text-center ">
+            <button type="button" id="RoomBtn" class="btn btn-outline-success border-0   " >Register</button>
+            <button type="button" id="RoomDiscard" class="btn btn-outline-danger border-0 " >Discard</button>
+        </div>
+          </form>
+    </div>
+    <script src="./Navbar T_files/jquery-3.2.1.slim.min.js"></script>
+    <script src="./Navbar T_files/popper.min.js"></script>
+    <script src="./Navbar T_files/bootstrap.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../common/jquery.js"></script>
+    <script src="../js/editor/addRoom.js"></script>
+</body>
+</html>
